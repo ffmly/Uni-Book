@@ -1,0 +1,98 @@
+{
+  "project": {
+    "submit": "Soumettre le Projet",
+    "submitting": "Soumission en cours...",
+    "submitted": "Projet soumis avec succès",
+    "submitError": "Échec de la soumission du projet. Veuillez réessayer.",
+    "requiredFields": "Veuillez remplir tous les champs obligatoires pour le projet",
+    "leaderRequired": "Veuillez remplir tous les champs obligatoires pour le chef d'équipe",
+    "step1": "Informations du Projet",
+    "title": "Titre du Projet",
+    "titlePlaceholder": "Entrez le titre du projet",
+    "description": "Description du Projet",
+    "descriptionPlaceholder": "Entrez la description du projet",
+    "department": "Département",
+    "selectDepartment": "Sélectionnez un département",
+    "departments": {
+      "engineering": "Ingénierie",
+      "science": "Sciences",
+      "arts": "Arts"
+    },
+    "leader": "Informations du Chef d'Équipe",
+    "firstName": "Prénom",
+    "firstNamePlaceholder": "Entrez le prénom",
+    "lastName": "Nom",
+    "lastNamePlaceholder": "Entrez le nom",
+    "dateOfBirth": "Date de Naissance",
+    "placeOfBirth": "Lieu de Naissance",
+    "placeOfBirthPlaceholder": "Entrez le lieu de naissance",
+    "faculty": "Faculté",
+    "facultyPlaceholder": "Entrez la faculté",
+    "studentId": "Numéro d'Étudiant",
+    "studentIdPlaceholder": "Entrez le numéro d'étudiant",
+    "fieldOfStudy": "Domaine d'Étude",
+    "fieldOfStudyPlaceholder": "Entrez le domaine d'étude",
+    "next": "Suivant",
+    "previous": "Précédent",
+    "status": {
+      "pending": "Envoyé",
+      "underReview": "En cours de traitement",
+      "assigned": "Dirigé vers une organisation",
+      "rejected": "Rejeté"
+    }
+  },
+  "admin": {
+    "dashboard": "Tableau de Bord Administrateur",
+    "projects": "Projets",
+    "projectUpdated": "Statut du projet mis à jour avec succès",
+    "selectStatus": "Sélectionner le Statut",
+    "status": {
+      "pending": "En Attente de Revue",
+      "underReview": "En Cours de Revue",
+      "approved": "Approuvé",
+      "rejected": "Rejeté"
+    },
+    "assignOrg": "Assigner une Organisation",
+    "organizations": "Organisations",
+    "createOrg": "Créer une Organisation",
+    "orgName": "Nom de l'Organisation",
+    "orgEmail": "Email de l'Organisation",
+    "orgDescription": "Description de l'Organisation",
+    "orgRequiredFields": "Veuillez remplir tous les champs obligatoires",
+    "orgCreated": "Organisation créée avec succès",
+    "existingOrgs": {
+      "businessIncubator": "Incubateur d'Entreprises",
+      "cde": "Centre de Développement des Entreprises",
+      "cati": "Centre d'Appui à l'Innovation et à la Technologie"
+    }
+  },
+  "org": {
+    "dashboard": "Tableau de Bord Organisation",
+    "projectUpdated": "Revue du projet soumise avec succès",
+    "previousComments": "Commentaires de Revue Précédents",
+    "reviewComments": "Entrez vos commentaires de revue",
+    "selectStatus": "Sélectionner le Statut",
+    "status": {
+      "underReview": "En Cours de Revue",
+      "approved": "Approuvé",
+      "rejected": "Rejeté"
+    },
+    "submitReview": "Soumettre la Revue"
+  },
+  "auth": {
+    "login": "Connexion",
+    "signup": "Inscription",
+    "logout": "Déconnexion",
+    "email": "Email",
+    "password": "Mot de passe",
+    "name": "Nom",
+    "role": "Rôle",
+    "student": "Étudiant",
+    "organization": "Organisation",
+    "loginError": "Email ou mot de passe invalide",
+    "signupError": "Erreur lors de la création du compte",
+    "welcome": "Bienvenue !",
+    "noAccount": "Vous n'avez pas de compte ?",
+    "haveAccount": "Vous avez déjà un compte ?"
+  }
+} 
