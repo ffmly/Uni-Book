@@ -47,16 +47,18 @@ export default function StudentDashboard() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    // Check if user is student
-    const user = JSON.parse(localStorage.getItem('currentUser') || 'null')
-    if (!user || user.role !== 'student') {
+    // Get current user
+    const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null')
+    if (!currentUser) {
       router.push('/login')
       return
     }
 
-    // Load projects from localStorage
-    const savedProjects = JSON.parse(localStorage.getItem('projects') || '[]')
-    setProjects(savedProjects)
+    // Get projects from localStorage
+    const allProjects = JSON.parse(localStorage.getItem('projects') || '[]')
+    // Filter projects to only show those belonging to the current user
+    const userProjects = allProjects.filter((project: any) => project.ownerId === currentUser.id)
+    setProjects(userProjects)
     setLoading(false)
   }, [router])
 

@@ -48,8 +48,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         role: userData.role
       })
 
-      setUser(newUser)
-      localStorage.setItem('currentUser', JSON.stringify(newUser))
+      // Don't automatically log in the user after registration
+      // setUser(newUser)
+      // localStorage.setItem('currentUser', JSON.stringify(newUser))
       return { error: null }
     } catch (error) {
       console.error("Error in signUp:", error)

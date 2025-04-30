@@ -65,7 +65,8 @@ export default function SubmitProject() {
 
     // Check if student already has a project
     const existingProjects = JSON.parse(localStorage.getItem('projects') || '[]')
-    if (existingProjects.length > 0) {
+    const userProjects = existingProjects.filter((project: any) => project.ownerId === user.id)
+    if (userProjects.length > 0) {
       toast.error('You can only submit one project')
       router.push('/project/dashboard')
       return
@@ -77,6 +78,14 @@ export default function SubmitProject() {
     setLoading(true)
 
     try {
+      // Get current user
+      const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null')
+      if (!currentUser) {
+        toast.error('Please log in to submit a project')
+        router.push('/login')
+        return
+      }
+
       // Create new project object
       const newProject = {
         id: Date.now().toString(),
@@ -92,7 +101,8 @@ export default function SubmitProject() {
         },
         teamMembers: teamMembers,
         status: 'pending',
-        createdAt: new Date().toISOString()
+        createdAt: new Date().toISOString(),
+        ownerId: currentUser.id
       }
 
       const existingProjects = JSON.parse(localStorage.getItem('projects') || '[]')

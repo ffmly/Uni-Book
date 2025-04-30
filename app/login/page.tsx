@@ -7,10 +7,11 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card } from "@/components/ui/card"
 import { toast } from "sonner"
-import { validateCredentials } from "@/lib/test-accounts"
+import { useAuth } from "@/lib/auth-context"
 
 export default function Login() {
   const router = useRouter()
+  const { signIn } = useAuth()
   const [loading, setLoading] = useState(false)
   const [formData, setFormData] = useState({
     email: "",
@@ -22,26 +23,29 @@ export default function Login() {
     setLoading(true)
 
     try {
-      const user = validateCredentials(formData.email, formData.password)
+      // Clear any existing user data before attempting to log in
+      localStorage.removeItem('currentUser')
       
-      if (!user) {
-        toast.error('Invalid email or password')
+      const { error } = await signIn(formData.email, formData.password)
+      
+      if (error) {
+        toast.error(error)
         return
       }
 
-      // Store user data in localStorage
-      localStorage.setItem('currentUser', JSON.stringify(user))
+      // Get the user from localStorage
+      const user = JSON.parse(localStorage.getItem('currentUser') || '{}')
 
       // Redirect based on user role
       switch (user.role) {
         case 'student':
-          router.push('/project/dashboard') // Student project dashboard
+          router.push('/project/dashboard')
           break
         case 'organization':
-          router.push('/organization/dashboard') // Organization dashboard
+          router.push('/organization/dashboard')
           break
         case 'admin':
-          router.push('/admin/dashboard') // Admin dashboard
+          router.push('/admin/dashboard')
           break
         default:
           router.push('/')
@@ -106,11 +110,15 @@ export default function Login() {
             {loading ? "Signing in..." : "Sign In"}
           </Button>
 
-          <div className="mt-4 text-sm text-center text-muted-foreground">
-            <p>Test Accounts:</p>
-            <p>Student: student@uni-book.com / student123</p>
-            <p>Admin: admin@uni-book.com / admin123</p>
-            <p>Org1: org1@uni-book.com / org1123</p>
+          <div className="mt-4 text-sm text-center">
+            <p className="text-muted-foreground">Don't have an account?</p>
+            <Button
+              variant="link"
+              onClick={() => router.push("/signup")}
+              className="text-primary hover:underline"
+            >
+              Sign Up
+            </Button>
           </div>
         </form>
       </Card>
